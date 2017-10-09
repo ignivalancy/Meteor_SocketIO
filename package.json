@@ -9,5 +9,9 @@
     "meteor-node-stubs": "~0.2.4",
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.0.3"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^3.0.2",
+    "utf-8-validate": "^3.0.3"
   }
 }

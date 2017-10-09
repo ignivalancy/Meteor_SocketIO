@@ -1,8 +1,16 @@
+/*
+ * @file: main.js
+ * @description: Socket.io configuration 
+ * @date: 09.10.2017
+ * @author: Lancy Goyal
+ * */
+
 import { Meteor } from 'meteor/meteor';
+import { WebApp } from 'meteor/webapp';
 import http from 'http';
 import socket_io from 'socket.io';
 
-const PORT = 3003;
+const PORT = 3000;
 
 // Client-side config
 WebAppInternals.addStaticJs(`
@@ -10,9 +18,8 @@ WebAppInternals.addStaticJs(`
 `);
 
 Meteor.startup(() => {
-    // Server
-    const server = http.createServer();
-    const io = socket_io(server);
+
+    const io = socket_io(WebApp.httpServer);
 
     let counter = 0;
 
@@ -34,14 +41,7 @@ Meteor.startup(() => {
         socket.on('disconnect', function() {
             console.log('socket disconnect');
         });
-        
-    });
 
-    // Start server
-    try {
-        server.listen(PORT);
-    } catch (e) {
-        console.error(e);
-    }
+    });
 
 });
